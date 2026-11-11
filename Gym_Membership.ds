@@ -1,5 +1,5 @@
 /*
- * Author       : logaprabha.gb.2024.cse_ra517
+ * Author       : yazhini.ps.2024.cse_ra612
  * Generated on : 02-Nov-2026 11:55:19
  * Version      : 1.0
  */
@@ -737,7 +737,7 @@
 											sendmail
 										[
 											from :zoho.adminuserid
-											to :"logaprabha.gb.2024.cse@rajalakshmi.edu.in"
+											to :"yazhini.ps.2024.cse@rajalakshmi.edu.in"
 											subject :"Zoho Creator Email Test"
 											message :"This is a test email from the Vehicle Service application."
 										]
@@ -763,8 +763,8 @@
 					{
 						sendmail
 						(
-							from : "logaprabha.gb.2024.cse@rajalakshmi.edu.in"
-							to : "logaprabha.gb.2024.cse@rajalakshmi.edu.in"
+							from : "yazhini.ps.2024.cse@rajalakshmi.edu.in"
+							to : "yazhini.ps.2024.cse@rajalakshmi.edu.in"
 							subject : "Service Request Confirmation"
 							message : "<div>Your request has successfully confirmed&nbsp;<br></div><div>Request ID: a103<br></div><div>Name:Ramesh</div>"
 							attachments : view : services_Report as PDF
@@ -796,7 +796,7 @@
 						{
 							sendmail
 							(
-								from : "logaprabha.gb.2024.cse@rajalakshmi.edu.in"
+								from : "yazhini.ps.2024.cse@rajalakshmi.edu.in"
 								to : approver.submitter,Email_Address,approver.all
 								subject : "Approval Request"
 								message : "<div>Your request has been approved.<br></div>"
