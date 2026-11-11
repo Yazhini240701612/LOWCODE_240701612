@@ -1,0 +1,3334 @@
+/*
+ * Author       : yazhini.ps.2024.cse_rajal843
+ * Generated on : 31-Oct-2026 11:47:14
+ * Version      : 1.0
+ */
+ application "AccessAble Campus"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Accessibility_Audit
+		{
+			displayname = "Accessibility Audit"
+			success message = "Audit submitted successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Audit_Reference
+			(
+    			type = text
+				displayname = "Audit Reference"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Facility
+			(
+				type = picklist	
+				values  = Campus_Facility.ID
+    			displayformat = [Facility_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Auditor
+			(
+				type = picklist	
+				values  = Staff_Directory.ID
+    			displayformat = [Staff_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Audit_Date
+			(
+    			type = date
+				displayname = "Audit Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ramp_Access
+			(
+				type = radiobuttons
+				displayname = "Ramp available and unobstructed"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Pathway_Clear
+			(
+				type = radiobuttons
+				displayname = "Pathway clear and level"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Signage_Present
+			(
+				type = radiobuttons
+				displayname = "Accessibility signage present"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Lift_Operational
+			(
+				type = radiobuttons
+				displayname = "Lift operational"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Restroom_Accessible
+			(
+				type = radiobuttons
+				displayname = "Accessible restroom available"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Parking_Usable
+			(
+				type = radiobuttons
+				displayname = "Accessible parking usable"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Handrails_Present
+			(
+				type = radiobuttons
+				displayname = "Handrails on stairs and ramps"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Tactile_Paving
+			(
+				type = radiobuttons
+				displayname = "Tactile paving intact"
+				values = {"Meets","Needs Improvement","Does Not Meet","N/A"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Audit_Score
+			(
+				type = decimal
+				displayname = "Audit Score (%)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Overall_Result
+			(
+				type = picklist
+				displayname = "Overall Result"
+				values = {"Accessible","Partially Accessible","Not Accessible"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Failed_Items
+			(
+				type = number
+				displayname = "Failed Items"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Evidence_Photo
+			(
+    			type = image
+				displayname = "Evidence Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Observations
+			(
+    			type = textarea
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Audit_Status
+			(
+				type = picklist
+				displayname = "Audit Status"
+				values = {"Draft","Submitted","Reviewed"}
+				initial value = "Submitted"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Barrier_Report
+		{
+			displayname = "Barrier Report"
+			success message = "Thank you! Your barrier report has been submitted."
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Report_Reference
+			(
+    			type = text
+				displayname = "Report Reference"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Reporter_Name
+			(
+    			type = text
+				displayname = "Reporter Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reporter_Email
+			(
+    			type = email
+				displayname = "Reporter Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reporter_Type
+			(
+				type = radiobuttons
+				displayname = "Reporter Type"
+				values = {"Student","Staff","Visitor"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Building
+			(
+				type = picklist	
+				values  = Campus_Building.ID
+    			displayformat = [Building_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Facility
+			(
+				type = picklist	
+				values  = Campus_Facility.ID
+    			displayformat = [Facility_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Barrier_Type
+			(
+				type = picklist
+				displayname = "Barrier Type"
+				values = {"Blocked Ramp","Lift Out of Service","Missing Handrail","Obstructed Pathway","Missing Signage","Damaged Tactile Paving","Inaccessible Restroom","Parking Misuse","Uneven Surface","Transport Boarding Issue","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Description
+			(
+    			type = textarea
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Barrier_Photo
+			(
+    			type = image
+				displayname = "Barrier Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Priority
+			(
+				type = picklist
+				values = {"Critical","High","Medium","Low"}
+				initial value = "Medium"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				values = {"Submitted","Under Review","Approved","Rejected","Assigned","Work in Progress","Awaiting Verification","Rework Required","Verified","Closed"}
+				initial value = "Submitted"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Source
+			(
+				type = picklist
+				values = {"Community Report","Audit Finding"}
+				initial value = "Community Report"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reported_On
+			(
+    			type = date
+				displayname = "Reported On"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Target_Date
+			(
+    			type = date
+				displayname = "Target Resolution Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Is_Recurring
+			(
+				type = picklist
+				displayname = "Recurring Barrier"
+				values = {"No","Yes"}
+				initial value = "No"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Recurrence_Count
+			(
+				type = number
+				displayname = "Similar Reports (60 days)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			AI_Keywords
+			(
+    			type = textarea
+				displayname = "AI Keywords"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			AI_Sentiment
+			(
+    			type = text
+				displayname = "AI Sentiment"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Escalation_Level
+			(
+				type = number
+				displayname = "Escalation Level"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Cliq_Status
+			(
+    			type = text
+				displayname = "Cliq Alert Status"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Closed_On
+			(
+    			type = date
+				displayname = "Closed On"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Days_To_Resolve
+			(
+				type = number
+				displayname = "Days to Resolve"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Campus_Building
+		{
+			displayname = "Campus Building"
+			success message = "Building saved"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Building_Name
+			(
+    			type = text
+				displayname = "Building Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Building_Code
+			(
+    			type = text
+				displayname = "Building Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Building_Type
+			(
+				type = picklist
+				displayname = "Building Type"
+				values = {"Academic","Administrative","Library","Cafeteria","Innovation","Recreation","Sports","Transport"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Floors
+			(
+				type = number
+				displayname = "No. of Floors"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Building_Photo
+			(
+    			type = image
+				displayname = "Building Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Accessibility_Score
+			(
+				type = decimal
+				displayname = "Accessibility Score (%)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Open_Barriers
+			(
+				type = number
+				displayname = "Open Barriers"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Last_Audit_Date
+			(
+    			type = date
+				displayname = "Last Audit Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Rating
+			(
+				type = picklist
+				displayname = "Accessibility Rating"
+				values = {"Green","Amber","Red","Not Audited"}
+				initial value = "Not Audited"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Building_Status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				values = {"Active","Inactive"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Campus_Facility
+		{
+			displayname = "Campus Facility"
+			success message = "Facility saved"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Facility_Name
+			(
+    			type = text
+				displayname = "Facility Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Campus_Building
+			(
+				type = picklist	
+				displayname = "Building"
+				values  = Campus_Building.ID
+    			displayformat = [Building_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Facility_Type
+			(
+				type = picklist
+				displayname = "Facility Type"
+				values = {"Ramp","Entrance","Lift","Staircase","Pathway","Restroom","Parking","Signage","Tactile Paving","Seating Area","Bus Boarding"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Floor
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Location_Description
+			(
+    			type = textarea
+				displayname = "Location Description"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Facility_Photo
+			(
+    			type = image
+				displayname = "Facility Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Next_Inspection_Due
+			(
+    			type = date
+				displayname = "Next Inspection Due"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Facility_Status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				values = {"Operational","Under Repair","Closed"}
+				initial value = "Operational"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Corrective_Action
+		{
+			displayname = "Corrective Action"
+			success message = "Corrective action saved"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Action_Reference
+			(
+    			type = text
+				displayname = "Action Reference"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Barrier_Report
+			(
+				type = picklist	
+				displayname = "Barrier Report"
+				values  = Barrier_Report.ID
+    			displayformat = [Report_Reference]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Assigned_To
+			(
+				type = picklist	
+				displayname = "Assigned To"
+				values  = Staff_Directory.ID
+    			displayformat = [Staff_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Assigned_On
+			(
+    			type = date
+				displayname = "Assigned On"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Target_Date
+			(
+    			type = date
+				displayname = "Target Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Work_Instructions
+			(
+    			type = textarea
+				displayname = "Work Instructions"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Progress
+			(
+				type = picklist
+				values = {"Not Started","In Progress","Completed"}
+				initial value = "Not Started"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Action_Taken
+			(
+    			type = textarea
+				displayname = "Action Taken"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Completion_Photo
+			(
+    			type = image
+				displayname = "Completion Evidence"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Verifier
+			(
+				type = picklist	
+				values  = Staff_Directory.ID
+    			displayformat = [Staff_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Verification_Result
+			(
+				type = picklist
+				displayname = "Verification Result"
+				values = {"Pending","Accepted","Rework Required"}
+				initial value = "Pending"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Verification_Comments
+			(
+    			type = textarea
+				displayname = "Verification Comments"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Verified_On
+			(
+    			type = date
+				displayname = "Verified On"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Is_Overdue
+			(
+				type = picklist
+				displayname = "Overdue"
+				values = {"No","Yes"}
+				initial value = "No"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Staff_Directory
+		{
+			displayname = "Staff Directory"
+			success message = "Staff member saved"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Staff_Name
+			(
+    			type = text
+				displayname = "Staff Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Staff_Email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Phone
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Team
+			(
+				type = picklist
+				values = {"Accessibility Cell","Civil Maintenance","Electrical","Lift Maintenance","Housekeeping","Transport","IT Services"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Staff_Role
+			(
+				type = picklist
+				displayname = "Role"
+				values = {"Accessibility Administrator","Auditor","Facilities Staff","Verifier"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Specialisation
+			(
+    			type = textarea
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Staff_Status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				values = {"Active","Inactive"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list Staff_Directory_Report
+		{
+			displayName = "Staff Directory"
+			show all rows from Staff_Directory    
+			(
+				Staff_Name as "Name"
+				Staff_Role as "Role"
+				Team
+				Staff_Email as "Email"
+				Phone
+				Specialisation
+				Staff_Status as "Status"
+			)
+		}
+		default list Campus_Building_Report
+		{
+			displayName = "Building Scorecard"
+			show all rows from Campus_Building    
+			(
+				Building_Name as "Building"
+				Building_Code as "Code"
+				Building_Type as "Type"
+				Accessibility_Score as "Score (%)"
+				Rating
+				Open_Barriers as "Open Barriers"
+				Last_Audit_Date as "Last Audit"
+				Floors
+				Building_Photo as "Photo"
+				Building_Status as "Status"
+			)
+		}
+		default list All_Campus_Facilities
+		{
+			displayName = "All Campus Facilities"
+			show all rows from Campus_Facility    
+			(
+				Facility_Name as "Facility"
+				Campus_Building.Building_Name as "Building"
+				Facility_Type as "Type"
+				Floor
+				Facility_Status as "Status"
+				Next_Inspection_Due as "Next Inspection Due"
+				Location_Description as "Location"
+				Facility_Photo as "Photo"
+			)
+		}
+		default list All_Accessibility_Audits
+		{
+			displayName = "All Accessibility Audits"
+			show all rows from Accessibility_Audit    
+			(
+				Audit_Reference as "Reference"
+				Audit_Date as "Audit Date"
+				Facility.Facility_Name as "Facility"
+				Auditor.Staff_Name as "Auditor"
+				Audit_Score as "Score (%)"
+				Overall_Result as "Result"
+				Failed_Items as "Failed Items"
+				Ramp_Access as "Ramp"
+				Pathway_Clear as "Pathway"
+				Signage_Present as "Signage"
+				Lift_Operational as "Lift"
+				Restroom_Accessible as "Restroom"
+				Parking_Usable as "Parking"
+				Handrails_Present as "Handrails"
+				Tactile_Paving as "Tactile Paving"
+				Evidence_Photo as "Evidence"
+				Observations
+				Audit_Status as "Status"
+			)
+		}
+		default list All_Barrier_Reports
+		{
+			displayName = "All Barrier Reports"
+			show all rows from Barrier_Report    
+			(
+				Report_Reference as "Reference"
+				Reported_On as "Reported On"
+				Building.Building_Name as "Building"
+				Facility.Facility_Name as "Facility"
+				Barrier_Type as "Barrier Type"
+				Priority
+				Status
+				Target_Date as "Target Date"
+				Is_Recurring as "Recurring"
+				Escalation_Level as "Escalation"
+				AI_Sentiment as "AI Sentiment"
+				AI_Keywords as "AI Keywords"
+				Reporter_Name as "Reporter"
+				Reporter_Type as "Reporter Type"
+				Description
+				Barrier_Photo as "Photo"
+				Source
+				Days_To_Resolve as "Days to Resolve"
+				Closed_On as "Closed On"
+				Cliq_Status as "Cliq Alert"
+			)
+		}
+		default list All_Corrective_Actions
+		{
+			displayName = "All Corrective Actions"
+			show all rows from Corrective_Action    
+			(
+				Action_Reference as "Reference"
+				Barrier_Report.Report_Reference as "Barrier Report"
+				Assigned_To.Staff_Name as "Assigned To"
+				Assigned_On as "Assigned On"
+				Target_Date as "Target Date"
+				Progress
+				Is_Overdue as "Overdue"
+				Verification_Result as "Verification"
+				Verifier.Staff_Name as "Verifier"
+				Verified_On as "Verified On"
+				Work_Instructions as "Instructions"
+				Action_Taken as "Action Taken"
+				Completion_Photo as "Evidence"
+				Verification_Comments as "Verifier Comments"
+			)
+		}
+		kanban aBarrier_Workflow_Board
+		{
+			displayName = "Barrier Workflow Board"
+			show all rows from Barrier_Report    
+			(
+				Report_Reference as "Report Reference"
+				Reporter_Name as "Reporter Name"
+				Reporter_Email as "Reporter Email"
+				Reporter_Type as "Reporter Type"
+				Building
+				Facility
+				Barrier_Type as "Barrier Type"
+				Description
+				Barrier_Photo as "Barrier Photo"
+				Priority
+				Status
+				Source
+				Reported_On as "Reported On"
+				Target_Date as "Target Resolution Date"
+				Is_Recurring as "Recurring Barrier"
+				Recurrence_Count as "Similar Reports (60 days)"
+				AI_Keywords as "AI Keywords"
+				AI_Sentiment as "AI Sentiment"
+				Escalation_Level as "Escalation Level"
+				Cliq_Status as "Cliq Alert Status"
+				Closed_On as "Closed On"
+				Days_To_Resolve as "Days to Resolve"
+			)
+			options
+			(
+	 			display field = Status
+	 		)
+		}
+		calendar Action_Due_Calendar
+		{
+			displayName = "Action Due Calendar"
+			show all rows from Corrective_Action    
+			(
+				Action_Reference as "Action Reference"
+				Barrier_Report as "Barrier Report"
+				Assigned_To as "Assigned To"
+				Assigned_On as "Assigned On"
+				Target_Date as "Target Date"
+				Work_Instructions as "Work Instructions"
+				Progress
+				Action_Taken as "Action Taken"
+				Completion_Photo as "Completion Evidence"
+				Verifier
+				Verification_Result as "Verification Result"
+				Verification_Comments as "Verification Comments"
+				Verified_On as "Verified On"
+				Is_Overdue as "Overdue"
+			)
+			options
+			(
+				display field = Action_Reference
+				start date = Target_Date
+			)
+		}
+		pivottable Building_Barrier_Pivot
+		{
+			displayname = "Building Barrier Pivot"
+			based on Autoview_1793417860251_Barrier_Report
+				show all rows from Barrier_Report
+				(
+			Report_Reference  as "Report Reference"
+			Reporter_Name  as "Reporter Name"
+			Reporter_Email  as "Reporter Email"
+			Reporter_Type  as "Reporter Type"
+			Building 
+			Facility 
+			Barrier_Type  as "Barrier Type"
+				)
+		}
+	}
+	pages
+	{
+		page Command_Centre
+		{
+			displayname = "Command Centre"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Header'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '22px'\n\tbgColor = '#1E2A5A'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'ACCESSABLE CAMPUS  |  ACCESSIBILITY COMMAND CENTRE'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '6px'\n\tcolor = '#C9D3FF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Campus Accessibility Auditing, Barrier Reporting and Resolution Management'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#9FB0F0'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Live view for the Accessibility Administrator - every number below is calculated from current records'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Buildings'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#3D5AFE'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'BUILDINGS REGISTERED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#3D5AFE'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Campus_Building.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Campus blocks under monitoring'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Audits'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#00897B'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'AUDITS COMPLETED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#00897B'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Accessibility_Audit.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Structured 8-point inspections'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Open'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#E53935'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'OPEN BARRIERS'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#E53935'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Status != &quot;Closed&quot; &amp;&amp; Status != &quot;Rejected&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Awaiting resolution'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Overdue'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#FB8C00'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'OVERDUE ACTIONS'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#FB8C00'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Is_Overdue == &quot;Yes&quot;'\n\t  value = 'thisapp.Corrective_Action.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Past target date - escalated'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Critical'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#C2185B'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'CRITICAL / HIGH OPEN'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#C2185B'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Priority == &quot;Critical&quot; || Priority == &quot;High&quot; &amp;&amp; Status != &quot;Closed&quot; &amp;&amp; Status != &quot;Rejected&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Highest priority barriers'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Recurring'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#6A1B9A'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'RECURRING BARRIERS'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#6A1B9A'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Is_Recurring == &quot;Yes&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '3+ similar reports in 60 days'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Closed'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#2E7D32'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'BARRIERS RESOLVED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#2E7D32'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Status == &quot;Closed&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Verified and closed'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Facilities'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#0277BD'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'FACILITIES TRACKED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#0277BD'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Campus_Facility.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Ramps, lifts, paths, restrooms...'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Analytics'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '0px'\n\tcolor = '#1E2A5A'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Barrier Analytics'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Barriers by Category'\n\n\ttype = 'Column'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '320px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Barrier_Report'\n\txfield = 'Barrier_Type'\n\tyfields = 'count:ID'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Barriers by Status'\n\n\ttype = 'Pie'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '320px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Barrier_Report'\n\txfield = 'Status'\n\tyfields = 'count:ID'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Barriers by Priority'\n\n\ttype = 'Column'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '320px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Barrier_Report'\n\txfield = 'Priority'\n\tyfields = 'count:ID'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Reporter Sentiment by AI'\n\n\ttype = 'Pie'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '320px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Barrier_Report'\n\txfield = 'AI_Sentiment'\n\tyfields = 'count:ID'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Buildings'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '0px'\n\tcolor = '#1E2A5A'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Building Accessibility Scores'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='60%'\n   \t>\n\t<chart \n\telementName='Accessibility Score by Building'\n\n\ttype = 'Bar'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '380px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Campus_Building'\n\txfield = 'Building_Name'\n\tyfields = 'sum:Accessibility_Score'\n/>\n\n</column><column\n   \t\t width='40%'\n   \t>\n\t<chart \n\telementName='Audit Results'\n\n\ttype = 'Pie'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'custom'\n\theightValue = '380px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Accessibility_Audit'\n\txfield = 'Overall_Result'\n\tyfields = 'count:ID'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Queue'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '0px'\n\tcolor = '#1E2A5A'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Priority Action Queue - all barrier reports'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Barrier Queue'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Barrier_Reports'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '600'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+		page Staff_Workboard
+		{
+			displayname = "Staff Workboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Header'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '22px'\n\tbgColor = '#00695C'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'STAFF WORKBOARD  |  AUDITORS AND FACILITIES TEAM'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '6px'\n\tcolor = '#F3E5F5'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Assigned corrective actions, due dates and verification queue'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Not Started'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#546E7A'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'NOT STARTED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#546E7A'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Progress == &quot;Not Started&quot;'\n\t  value = 'thisapp.Corrective_Action.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Newly assigned work'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI In Progress'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#1E88E5'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'IN PROGRESS'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#1E88E5'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Progress == &quot;In Progress&quot;'\n\t  value = 'thisapp.Corrective_Action.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Work underway'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Verify'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#8E24AA'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'AWAITING VERIFICATION'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#8E24AA'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Progress == &quot;Completed&quot; &amp;&amp; Verification_Result == &quot;Pending&quot;'\n\t  value = 'thisapp.Corrective_Action.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Ready for the verifier'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='KPI Overdue'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#E53935'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'OVERDUE'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#E53935'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Is_Overdue == &quot;Yes&quot;'\n\t  value = 'thisapp.Corrective_Action.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Past target date'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Board'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#004D40'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Barrier Workflow Board'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Workflow Board'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'aBarrier_Workflow_Board'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '600'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Calendar'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#004D40'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Corrective Action Due Calendar'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Due Calendar'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Action_Due_Calendar'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '600'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Actions'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#004D40'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'All Corrective Actions'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Action List'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Corrective_Actions'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '600'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+		page Report_and_Track
+		{
+			displayname = "Report and Track"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Header'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '22px'\n\tbgColor = '#6A1B9A'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'SEE A BARRIER? REPORT IT.'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '6px'\n\tcolor = '#F3E5F5'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Blocked ramp, broken lift, missing handrail, damaged path? Tell us in under a minute - the Accessibility Cell is alerted instantly.'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#E1BEE7'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'You get an email with your reference number, and another when the barrier is fixed.'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='33%'\n   \t>\n\t<panel elementName='KPI Reported'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#6A1B9A'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'BARRIERS REPORTED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#6A1B9A'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'By the campus community'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='33%'\n   \t>\n\t<panel elementName='KPI Fixed'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#2E7D32'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'BARRIERS FIXED'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#2E7D32'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Status == &quot;Closed&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Verified and closed'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='34%'\n   \t>\n\t<panel elementName='KPI Progress'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '18px'\n\tbgColor = '#FFFFFF'\n\n    borderColor = '#EF6C00'\n    borderWidth = '2px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '10px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#5B6475'\n\tsize = '13px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'BEING WORKED ON'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '4px'\n\tcolor = '#EF6C00'\n\tsize = '34px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'Status != &quot;Closed&quot; &amp;&amp; Status != &quot;Rejected&quot;'\n\t  value = 'thisapp.Barrier_Report.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '2px'\n\tcolor = '#8A93A6'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Under review or in progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Form'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#4A148C'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Report a Barrier'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<form \n\telementName='Report Form'\n\n\tappLinkName = 'thisapp'\n\tlinkName = 'Barrier_Report'\n\tzc_Header = 'false'\n/> \n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Title Track'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '6px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#4A148C'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Track Reports'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Track Reports'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Barrier_Reports'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '600'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void computeAuditScore(int aId)
+                 {
+                 	a = Accessibility_Audit[ID == aId];
+                 	if(a.count() > 0)
+                 	{
+                 		vals = List();
+                 		vals.add(ifnull(a.Ramp_Access,"N/A"));
+                 		vals.add(ifnull(a.Pathway_Clear,"N/A"));
+                 		vals.add(ifnull(a.Signage_Present,"N/A"));
+                 		vals.add(ifnull(a.Lift_Operational,"N/A"));
+                 		vals.add(ifnull(a.Restroom_Accessible,"N/A"));
+                 		vals.add(ifnull(a.Parking_Usable,"N/A"));
+                 		vals.add(ifnull(a.Handrails_Present,"N/A"));
+                 		vals.add(ifnull(a.Tactile_Paving,"N/A"));
+                 		pts = 0.0;
+                 		applicable = 0;
+                 		failed = 0;
+                 		for each  v in vals
+                 		{
+                 			if(v == "Meets")
+                 			{
+                 				pts = pts + 1;
+                 				applicable = applicable + 1;
+                 			}
+                 			else if(v == "Needs Improvement")
+                 			{
+                 				pts = pts + 0.5;
+                 				applicable = applicable + 1;
+                 			}
+                 			else if(v == "Does Not Meet")
+                 			{
+                 				applicable = applicable + 1;
+                 				failed = failed + 1;
+                 			}
+                 		}
+                 		score = 0.0;
+                 		if(applicable > 0)
+                 		{
+                 			score = (pts / applicable * 100).round(1);
+                 		}
+                 		a.Audit_Score=score;
+                 		a.Failed_Items=failed;
+                 		a.Overall_Result=if(score >= 80,"Accessible",if(score >= 50,"Partially Accessible","Not Accessible"));
+                 		if(isBlank(a.Audit_Reference))
+                 		{
+                 			seq = Accessibility_Audit[ID <= aId].count();
+                 			a.Audit_Reference="AUD-" + a.Audit_Date.getYear() + "-" + ("0000" + seq).right(4);
+                 		}
+                 		f = Campus_Facility[ID == a.Facility];
+                 		if(f.count() > 0)
+                 		{
+                 			f.Next_Inspection_Due=a.Audit_Date.addDay(if(score >= 80,180,if(score >= 50,90,30)));
+                 			thisapp.refreshBuilding(f.Campus_Building);
+                 		}
+                 	}
+                 }
+				 void escalateOverdue()
+                 {
+                 	today = zoho.currentdate;
+                 	lines = List();
+                 	cnt = 0;
+                 	for each  r in Barrier_Report[Status != "Closed" && Status != "Rejected" && Target_Date < today]
+                 	{
+                 		lvl = ifnull(r.Escalation_Level,0) + 1;
+                 		r.Escalation_Level=lvl;
+                 		daysLate = daysBetween(r.Target_Date,today);
+                 		bName = ifnull(Campus_Building[ID == r.Building].Building_Name,"Campus");
+                 		lines.add(r.Report_Reference + " - " + r.Barrier_Type + " at " + bName + " (" + r.Priority + ", " + daysLate + " day(s) overdue, level " + lvl + ")");
+                 		cnt = cnt + 1;
+                 		for each  c in Corrective_Action[Barrier_Report == r.ID && Progress != "Completed"]
+                 		{
+                 			c.Is_Overdue="Yes";
+                 		}
+                 	}
+                 	for each  c2 in Corrective_Action[Progress == "Completed"]
+                 	{
+                 		c2.Is_Overdue="No";
+                 	}
+                 	// Facilities due for re-inspection
+                 	dueF = Campus_Facility[Next_Inspection_Due <= today.addDay(7)].count();
+                 	if(cnt > 0)
+                 	{
+                 		msg = "ESCALATION - " + cnt + " accessibility barrier(s) are past their target date:\n- " + lines.toString("\n- ");
+                 		if(dueF > 0)
+                 		{
+                 			msg = msg + "\n" + dueF + " facility/facilities due for re-inspection within 7 days.";
+                 		}
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts",msg,"zoho_cliq_connection");
+                 			info resp;
+                 		}		catch (e)
+                 		{
+                 			info e;
+                 		}
+                 		sendmail
+                 		[
+                 			from :zoho.adminuserid
+                 			to :zoho.adminuserid
+                 			subject :"AccessAble Campus - Daily escalation: " + cnt + " overdue barrier(s)"
+                 			message :"<p>The following accessibility barriers are overdue and have been escalated:</p><ul><li>" + lines.toString("</li><li>") + "</li></ul><p>" + dueF + " facility/facilities are due for re-inspection within 7 days.</p>"
+                 		]
+                 	}
+                 	for each  b in Campus_Building[ID != 0]
+                 	{
+                 		thisapp.refreshBuilding(b.ID);
+                 	}
+                 	info cnt + " overdue barrier(s) escalated";
+                 }
+				 void handleActionUpdate(int cId)
+                 {
+                 	c = Corrective_Action[ID == cId];
+                 	if(c.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	r = Barrier_Report[ID == c.Barrier_Report];
+                 	if(r.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	today = zoho.currentdate;
+                 	if(isBlank(c.Action_Reference))
+                 	{
+                 		c.Action_Reference=r.Report_Reference.replaceAll("ACB-","ACT-");
+                 	}
+                 	if(c.Assigned_On == null)
+                 	{
+                 		c.Assigned_On=today;
+                 	}
+                 	if(c.Target_Date == null)
+                 	{
+                 		c.Target_Date=r.Target_Date;
+                 	}
+                 	c.Is_Overdue=if(c.Progress != "Completed" && c.Target_Date != null && c.Target_Date < today,"Yes","No");
+                 	bName = ifnull(Campus_Building[ID == r.Building].Building_Name,"Campus");
+                 	if(c.Verification_Result == "Accepted")
+                 	{
+                 		if(c.Verified_On == null)
+                 		{
+                 			c.Verified_On=today;
+                 		}
+                 		c.Progress="Completed";
+                 		c.Is_Overdue="No";
+                 		r.Status="Verified";
+                 		r.Closed_On=c.Verified_On;
+                 		thisapp.handleBarrierStatus(r.ID);
+                 	}
+                 	else if(c.Verification_Result == "Rework Required")
+                 	{
+                 		r.Status="Rework Required";
+                 		c.Progress="In Progress";
+                 		c.Verification_Result="Pending";
+                 		stf = Staff_Directory[ID == c.Assigned_To];
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts","Rework required: " + c.Action_Reference + " (" + r.Barrier_Type + " at " + bName + ") was not accepted by the verifier. Comment: " + ifnull(c.Verification_Comments,"-"),"zoho_cliq_connection");
+                 		}		catch (e)
+                 		{
+                 			info e;
+                 		}
+                 		if(stf.count() > 0)
+                 		{
+                 			sendmail
+                 			[
+                 				from :zoho.adminuserid
+                 				to :stf.Staff_Email
+                 				subject :"AccessAble Campus - Rework required on " + c.Action_Reference
+                 				message :"<p>The verifier has asked for rework on " + c.Action_Reference + " (" + r.Barrier_Type + " at " + bName + ").</p><p><b>Comments:</b> " + ifnull(c.Verification_Comments,"-") + "</p>"
+                 			]
+                 		}
+                 	}
+                 	else if(c.Progress == "Completed")
+                 	{
+                 		r.Status="Awaiting Verification";
+                 		ver = Staff_Directory[ID == c.Verifier];
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts","Ready for verification: " + c.Action_Reference + " (" + r.Barrier_Type + " at " + bName + "). Action taken: " + ifnull(c.Action_Taken,"-"),"zoho_cliq_connection");
+                 		}		catch (e)
+                 		{
+                 			info e;
+                 		}
+                 		if(ver.count() > 0)
+                 		{
+                 			sendmail
+                 			[
+                 				from :zoho.adminuserid
+                 				to :ver.Staff_Email
+                 				subject :"AccessAble Campus - Please verify " + c.Action_Reference
+                 				message :"<p>Work on " + c.Action_Reference + " (" + r.Barrier_Type + " at " + bName + ") is marked complete.</p><p><b>Action taken:</b> " + ifnull(c.Action_Taken,"-") + "</p><p>Please inspect and record the verification result.</p>"
+                 			]
+                 		}
+                 	}
+                 	else if(c.Progress == "In Progress")
+                 	{
+                 		r.Status="Work in Progress";
+                 	}
+                 	else
+                 	{
+                 		if(r.Status == "Approved" || r.Status == "Under Review" || r.Status == "Submitted")
+                 		{
+                 			r.Status="Assigned";
+                 		}
+                 	}
+                 	thisapp.refreshBuilding(r.Building);
+                 }
+				 void handleAudit(int aId)
+                 {
+                 	thisapp.computeAuditScore(aId);
+                 	a = Accessibility_Audit[ID == aId];
+                 	if(a.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	f = Campus_Facility[ID == a.Facility];
+                 	if(f.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	aud = Staff_Directory[ID == a.Auditor];
+                 	// map checklist item -> (value, barrier type, priority)
+                 	items = List();
+                 	items.add({"v":a.Ramp_Access,"t":"Blocked Ramp","p":"High","l":"Ramp not available / obstructed"});
+                 	items.add({"v":a.Pathway_Clear,"t":"Obstructed Pathway","p":"Medium","l":"Pathway not clear or level"});
+                 	items.add({"v":a.Signage_Present,"t":"Missing Signage","p":"Low","l":"Accessibility signage missing"});
+                 	items.add({"v":a.Lift_Operational,"t":"Lift Out of Service","p":"High","l":"Lift not operational"});
+                 	items.add({"v":a.Restroom_Accessible,"t":"Inaccessible Restroom","p":"High","l":"Accessible restroom unavailable"});
+                 	items.add({"v":a.Parking_Usable,"t":"Parking Misuse","p":"Medium","l":"Accessible parking not usable"});
+                 	items.add({"v":a.Handrails_Present,"t":"Missing Handrail","p":"High","l":"Handrails missing on stairs/ramp"});
+                 	items.add({"v":a.Tactile_Paving,"t":"Damaged Tactile Paving","p":"Medium","l":"Tactile paving damaged"});
+                 	created = 0;
+                 	for each  it in items
+                 	{
+                 		if(it.get("v") == "Does Not Meet")
+                 		{
+                 			existing = Barrier_Report[Facility == f.ID && Barrier_Type == it.get("t") && Status != "Closed" && Status != "Rejected"].count();
+                 			if(existing == 0)
+                 			{
+                 				nid = insert into Barrier_Report
+                 				[
+                 					Added_User=zoho.loginuser
+                 					Reporter_Name=ifnull(aud.Staff_Name,"Auditor")
+                 					Reporter_Email=ifnull(aud.Staff_Email,zoho.adminuserid)
+                 					Reporter_Type="Staff"
+                 					Building=f.Campus_Building
+                 					Facility=f.ID
+                 					Barrier_Type=it.get("t")
+                 					Description="Audit finding (" + ifnull(a.Audit_Reference,"audit") + "): " + it.get("l") + " at " + f.Facility_Name + ". " + ifnull(a.Observations,"")
+                 					Priority=it.get("p")
+                 					Status="Approved"
+                 					Source="Audit Finding"
+                 					Reported_On=a.Audit_Date
+                 				];
+                 				thisapp.processBarrierReport(nid);
+                 				thisapp.handleBarrierStatus(nid);
+                 				created = created + 1;
+                 			}
+                 		}
+                 	}
+                 	// Notify reviewer on Cliq if facility is poorly rated
+                 	if(ifnull(a.Audit_Score,100) < 50 || created > 0)
+                 	{
+                 		msg = "Audit " + a.Audit_Reference + " submitted for " + f.Facility_Name + " | Score " + a.Audit_Score + "% (" + a.Overall_Result + ") | " + created + " new barrier(s) raised automatically. Please review.";
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts",msg,"zoho_cliq_connection");
+                 			info resp;
+                 		}		catch (e)
+                 		{
+                 			info e;
+                 		}
+                 	}
+                 	a.Audit_Status="Submitted";
+                 }
+				 void handleBarrierStatus(int rId)
+                 {
+                 	r = Barrier_Report[ID == rId];
+                 	if(r.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	today = zoho.currentdate;
+                 	bName = ifnull(Campus_Building[ID == r.Building].Building_Name,"Campus");
+                 	st = r.Status;
+                 	// Approved -> auto-create and auto-route a corrective action to the right team
+                 	if(st == "Approved")
+                 	{
+                 		if(Corrective_Action[Barrier_Report == rId].count() == 0)
+                 		{
+                 			team = "Civil Maintenance";
+                 			if(r.Barrier_Type == "Lift Out of Service")
+                 			{
+                 				team = "Lift Maintenance";
+                 			}
+                 			else if(r.Barrier_Type == "Transport Boarding Issue")
+                 			{
+                 				team = "Transport";
+                 			}
+                 			else if(r.Barrier_Type == "Missing Signage" || r.Barrier_Type == "Inaccessible Restroom")
+                 			{
+                 				team = "Civil Maintenance";
+                 			}
+                 			stf = Staff_Directory[Team == team && Staff_Role == "Facilities Staff" && Staff_Status == "Active"] range from 1 to 1;
+                 			if(stf.count() == 0)
+                 			{
+                 				stf = Staff_Directory[Staff_Role == "Facilities Staff" && Staff_Status == "Active"] range from 1 to 1;
+                 			}
+                 			ver = Staff_Directory[Staff_Role == "Verifier" && Staff_Status == "Active"] range from 1 to 1;
+                 			if(stf.count() > 0)
+                 			{
+                 				insert into Corrective_Action
+                 				[
+                 					Added_User=zoho.loginuser
+                 					Action_Reference=r.Report_Reference.replaceAll("ACB-","ACT-")
+                 					Barrier_Report=rId
+                 					Assigned_To=stf.ID
+                 					Assigned_On=today
+                 					Target_Date=r.Target_Date
+                 					Work_Instructions="Resolve " + r.Barrier_Type + " at " + bName + ". " + ifnull(r.Description,"")
+                 					Progress="Not Started"
+                 					Verifier=if(ver.count() > 0,ver.ID,null)
+                 					Verification_Result="Pending"
+                 					Is_Overdue="No"
+                 				]
+                 				r.Status="Assigned";
+                 				msg = "Assigned: " + r.Report_Reference + " (" + r.Priority + " - " + r.Barrier_Type + " at " + bName + ") assigned to " + stf.Staff_Name + " [" + team + "]. Due " + r.Target_Date.toString("dd-MMM-yyyy");
+                 				try 
+                 				{
+                 					resp = zoho.cliq.postToChannel("accessalerts",msg,"zoho_cliq_connection");
+                 				}				catch (e)
+                 				{
+                 					info e;
+                 				}
+                 				sendmail
+                 				[
+                 					from :zoho.adminuserid
+                 					to :stf.Staff_Email
+                 					subject :"AccessAble Campus - New corrective action " + r.Report_Reference
+                 					message :"<p>Dear " + stf.Staff_Name + ",</p><p>A new accessibility barrier has been assigned to you.</p><p><b>Reference:</b> " + r.Report_Reference + "<br><b>Barrier:</b> " + r.Barrier_Type + " at " + bName + "<br><b>Priority:</b> " + r.Priority + "<br><b>Due:</b> " + r.Target_Date.toString("dd-MMM-yyyy") + "</p><p>" + ifnull(r.Description,"") + "</p><p>Please update progress in AccessAble Campus.</p>"
+                 				]
+                 			}
+                 		}
+                 	}
+                 	// Rejected -> inform reporter
+                 	if(st == "Rejected" && !isBlank(r.Reporter_Email))
+                 	{
+                 		sendmail
+                 		[
+                 			from :zoho.adminuserid
+                 			to :r.Reporter_Email
+                 			subject :"AccessAble Campus - Report " + r.Report_Reference + " reviewed"
+                 			message :"<p>Dear " + r.Reporter_Name + ",</p><p>Your report " + r.Report_Reference + " was reviewed and closed without action (duplicate or not an accessibility barrier). Please contact the Accessibility Cell if the problem persists.</p>"
+                 		]
+                 	}
+                 	// Closed -> resolution metrics + closure email
+                 	if(st == "Closed" || st == "Verified")
+                 	{
+                 		if(r.Closed_On == null)
+                 		{
+                 			r.Closed_On=today;
+                 		}
+                 		r.Days_To_Resolve=daysBetween(r.Reported_On,r.Closed_On);
+                 		r.Status="Closed";
+                 		if(!isBlank(r.Reporter_Email))
+                 		{
+                 			sendmail
+                 			[
+                 				from :zoho.adminuserid
+                 				to :r.Reporter_Email
+                 				subject :"Barrier Closure Certificate - " + r.Report_Reference
+                 				message :"<div style='max-width:620px;margin:auto;border:6px double #1E2A5A;padding:28px;font-family:Georgia,serif;text-align:center'><div style='font-size:13px;letter-spacing:3px;color:#5B6475'>ACCESSABLE CAMPUS</div><h1 style='color:#1E2A5A;margin:8px 0'>Barrier Closure Certificate</h1><p style='font-size:15px'>This certifies that the accessibility barrier reported by <b>" + r.Reporter_Name + "</b> has been resolved and verified.</p><table style='margin:16px auto;font-size:14px;text-align:left'><tr><td><b>Reference</b></td><td>" + r.Report_Reference + "</td></tr><tr><td><b>Barrier</b></td><td>" + r.Barrier_Type + "</td></tr><tr><td><b>Location</b></td><td>" + bName + "</td></tr><tr><td><b>Priority</b></td><td>" + r.Priority + "</td></tr><tr><td><b>Reported on</b></td><td>" + r.Reported_On.toString("dd-MMM-yyyy") + "</td></tr><tr><td><b>Closed on</b></td><td>" + r.Closed_On.toString("dd-MMM-yyyy") + "</td></tr><tr><td><b>Resolved in</b></td><td>" + r.Days_To_Resolve + " day(s)</td></tr></table><p style='font-size:13px;color:#5B6475'>Thank you for helping make our campus accessible for everyone.</p><p style='font-size:12px;color:#8A93A6'>Accessibility Cell - AccessAble Campus</p></div>"
+                 			]
+                 		}
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts","Resolved: " + r.Report_Reference + " (" + r.Barrier_Type + " at " + bName + ") closed in " + r.Days_To_Resolve + " day(s).","zoho_cliq_connection");
+                 		}		catch (e)
+                 		{
+                 			info e;
+                 		}
+                 	}
+                 	thisapp.refreshBuilding(r.Building);
+                 }
+				 void loadSampleData()
+                 {
+                 	if(Campus_Building[ID != 0].count() > 0)
+                 	{
+                 		info "Data already loaded - skipped";
+                 		return;
+                 	}
+                 	em = zoho.adminuserid;
+                 	today = zoho.currentdate;
+                 	// ---------- Staff ----------
+                 	staff = List();
+                 	staff.add({"k":"ADMIN","n":"Dr. Meena Raghavan","r":"Accessibility Administrator","t":"Accessibility Cell","s":"Campus accessibility coordinator"});
+                 	staff.add({"k":"AUD1","n":"Arun Kumar","r":"Auditor","t":"Accessibility Cell","s":"Building access audits"});
+                 	staff.add({"k":"AUD2","n":"Priya Sundar","r":"Auditor","t":"Accessibility Cell","s":"Restroom and signage audits"});
+                 	staff.add({"k":"CIV","n":"Ravi Shankar","r":"Facilities Staff","t":"Civil Maintenance","s":"Ramps, pathways, handrails"});
+                 	staff.add({"k":"LIFT","n":"Suresh Mani","r":"Facilities Staff","t":"Lift Maintenance","s":"Lift servicing"});
+                 	staff.add({"k":"TRN","n":"Mohan Das","r":"Facilities Staff","t":"Transport","s":"College bus fleet"});
+                 	staff.add({"k":"VER","n":"Kavitha Nair","r":"Verifier","t":"Accessibility Cell","s":"Work verification"});
+                 	sId = Map();
+                 	for each  s in staff
+                 	{
+                 		nid = insert into Staff_Directory
+                 		[
+                 			Added_User=zoho.loginuser
+                 			Staff_Name=s.get("n")
+                 			Staff_Email=em
+                 			Staff_Role=s.get("r")
+                 			Team=s.get("t")
+                 			Specialisation=s.get("s")
+                 			Staff_Status="Active"
+                 		];
+                 		sId.put(s.get("k"),nid);
+                 	}
+                 	// ---------- Buildings ----------
+                 	blds = List();
+                 	blds.add({"c":"ADM","n":"Admin Block","t":"Administrative","f":3});
+                 	blds.add({"c":"WSB","n":"Workshop Block","t":"Academic","f":2});
+                 	blds.add({"c":"LIB","n":"Library","t":"Library","f":2});
+                 	blds.add({"c":"HUT","n":"Hut Cafe","t":"Cafeteria","f":1});
+                 	blds.add({"c":"RCF","n":"REC Cafe","t":"Cafeteria","f":1});
+                 	blds.add({"c":"IDF","n":"Idea Factory","t":"Innovation","f":2});
+                 	blds.add({"c":"TLG","n":"Tech Lounge","t":"Recreation","f":1});
+                 	blds.add({"c":"CBL","n":"C Block","t":"Academic","f":4});
+                 	blds.add({"c":"ACB","n":"Academic Block","t":"Academic","f":5});
+                 	blds.add({"c":"LBB","n":"Library Block","t":"Library","f":3});
+                 	blds.add({"c":"BBC","n":"BB Court","t":"Sports","f":0});
+                 	blds.add({"c":"BUS","n":"Bus Bay (Transport)","t":"Transport","f":0});
+                 	bId = Map();
+                 	for each  b in blds
+                 	{
+                 		nid = insert into Campus_Building
+                 		[
+                 			Added_User=zoho.loginuser
+                 			Building_Name=b.get("n")
+                 			Building_Code=b.get("c")
+                 			Building_Type=b.get("t")
+                 			Floors=b.get("f")
+                 			Rating="Not Audited"
+                 			Open_Barriers=0
+                 			Building_Status="Active"
+                 		];
+                 		bId.put(b.get("c"),nid);
+                 	}
+                 	// ---------- Facilities ----------
+                 	facs = List();
+                 	facs.add({"k":"ADM-RAMP","b":"ADM","n":"Admin Main Entrance Ramp","t":"Ramp","fl":"Ground"});
+                 	facs.add({"k":"ADM-LIFT","b":"ADM","n":"Admin Block Lift","t":"Lift","fl":"Ground"});
+                 	facs.add({"k":"ACB-LIFTA","b":"ACB","n":"Academic Block Lift A","t":"Lift","fl":"Ground"});
+                 	facs.add({"k":"ACB-RR","b":"ACB","n":"Academic Block Accessible Restroom","t":"Restroom","fl":"Ground"});
+                 	facs.add({"k":"ACB-ENT","b":"ACB","n":"Academic Block Main Entrance","t":"Entrance","fl":"Ground"});
+                 	facs.add({"k":"LIB-STEPS","b":"LIB","n":"Library Front Steps","t":"Staircase","fl":"Ground"});
+                 	facs.add({"k":"LBB-LIFT","b":"LBB","n":"Library Block Lift","t":"Lift","fl":"Ground"});
+                 	facs.add({"k":"LBB-PARK","b":"LBB","n":"Library Block Accessible Parking","t":"Parking","fl":"Outdoor"});
+                 	facs.add({"k":"WSB-PATH","b":"WSB","n":"Workshop Access Pathway","t":"Pathway","fl":"Outdoor"});
+                 	facs.add({"k":"HUT-ENT","b":"HUT","n":"Hut Cafe Entrance","t":"Entrance","fl":"Ground"});
+                 	facs.add({"k":"RCF-RR","b":"RCF","n":"REC Cafe Restroom","t":"Restroom","fl":"Ground"});
+                 	facs.add({"k":"IDF-SIGN","b":"IDF","n":"Idea Factory Accessibility Signage","t":"Signage","fl":"Ground"});
+                 	facs.add({"k":"TLG-RAMP","b":"TLG","n":"Tech Lounge Ramp","t":"Ramp","fl":"Ground"});
+                 	facs.add({"k":"CBL-TACT","b":"CBL","n":"C Block Footpath Tactile Paving","t":"Tactile Paving","fl":"Outdoor"});
+                 	facs.add({"k":"CBL-STAIR","b":"CBL","n":"C Block Main Staircase","t":"Staircase","fl":"All floors"});
+                 	facs.add({"k":"BBC-PATH","b":"BBC","n":"BB Court Access Path","t":"Pathway","fl":"Outdoor"});
+                 	facs.add({"k":"BUS-BOARD","b":"BUS","n":"College Bus Boarding Point","t":"Bus Boarding","fl":"Outdoor"});
+                 	fId = Map();
+                 	for each  f in facs
+                 	{
+                 		nid = insert into Campus_Facility
+                 		[
+                 			Added_User=zoho.loginuser
+                 			Facility_Name=f.get("n")
+                 			Campus_Building=bId.get(f.get("b"))
+                 			Facility_Type=f.get("t")
+                 			Floor=f.get("fl")
+                 			Facility_Status="Operational"
+                 		];
+                 		fId.put(f.get("k"),nid);
+                 	}
+                 	// ---------- Audits ----------
+                 	cm = {"M":"Meets","N":"Needs Improvement","D":"Does Not Meet","X":"N/A"};
+                 	auds = List();
+                 	auds.add({"f":"ACB-ENT","d":80,"a":"AUD1","c":"NNMXXMNM"});
+                 	auds.add({"f":"ADM-RAMP","d":75,"a":"AUD1","c":"DMNXXMNM"});
+                 	auds.add({"f":"ACB-LIFTA","d":70,"a":"AUD2","c":"MNMDXXMN"});
+                 	auds.add({"f":"BBC-PATH","d":65,"a":"AUD1","c":"XDNXXXXN"});
+                 	auds.add({"f":"HUT-ENT","d":60,"a":"AUD2","c":"DNDXXXNX"});
+                 	auds.add({"f":"LIB-STEPS","d":55,"a":"AUD1","c":"XMNXXXDN"});
+                 	auds.add({"f":"CBL-TACT","d":50,"a":"AUD2","c":"XNMXXXMD"});
+                 	auds.add({"f":"RCF-RR","d":45,"a":"AUD2","c":"XNNXDXNX"});
+                 	auds.add({"f":"ACB-RR","d":40,"a":"AUD1","c":"XMNXDXMX"});
+                 	auds.add({"f":"LBB-LIFT","d":35,"a":"AUD2","c":"MMMNXMMM"});
+                 	auds.add({"f":"IDF-SIGN","d":30,"a":"AUD1","c":"MMDXXXMM"});
+                 	auds.add({"f":"WSB-PATH","d":28,"a":"AUD2","c":"XDNXXXNN"});
+                 	auds.add({"f":"BUS-BOARD","d":25,"a":"AUD1","c":"XXNXXXDX"});
+                 	auds.add({"f":"ADM-RAMP","d":20,"a":"AUD2","c":"MMMXXMMN"});
+                 	auds.add({"f":"TLG-RAMP","d":18,"a":"AUD1","c":"NMMXXXMM"});
+                 	auds.add({"f":"ACB-LIFTA","d":12,"a":"AUD2","c":"MMNDXXMM"});
+                 	auds.add({"f":"CBL-STAIR","d":9,"a":"AUD1","c":"XMMXXXNM"});
+                 	auds.add({"f":"LBB-PARK","d":5,"a":"AUD2","c":"MMMXXMMM"});
+                 	for each  a in auds
+                 	{
+                 		c = a.get("c");
+                 		nid = insert into Accessibility_Audit
+                 		[
+                 			Added_User=zoho.loginuser
+                 			Facility=fId.get(a.get("f"))
+                 			Auditor=sId.get(a.get("a"))
+                 			Audit_Date=today.subDay(a.get("d"))
+                 			Ramp_Access=cm.get(c.subString(0,1))
+                 			Pathway_Clear=cm.get(c.subString(1,2))
+                 			Signage_Present=cm.get(c.subString(2,3))
+                 			Lift_Operational=cm.get(c.subString(3,4))
+                 			Restroom_Accessible=cm.get(c.subString(4,5))
+                 			Parking_Usable=cm.get(c.subString(5,6))
+                 			Handrails_Present=cm.get(c.subString(6,7))
+                 			Tactile_Paving=cm.get(c.subString(7,8))
+                 			Observations="Routine accessibility inspection"
+                 			Audit_Status="Reviewed"
+                 		];
+                 		thisapp.computeAuditScore(nid);
+                 	}
+                 	// ---------- Barrier reports ----------
+                 	pDays = {"Critical":2,"High":5,"Medium":10,"Low":20};
+                 	brs = List();
+                 	brs.add({"b":"ACB","f":"ACB-LIFTA","t":"Lift Out of Service","p":"High","s":"Closed","d":50,"cd":47,"rn":"Karthik R","rt":"Student","st":"Disappointment","kw":"lift, not responding, stairs","w":"LIFT","desc":"Lift A in the Academic Block is not responding and students with mobility needs are forced to use the stairs."});
+                 	brs.add({"b":"ADM","f":"ADM-RAMP","t":"Blocked Ramp","p":"High","s":"Closed","d":40,"cd":36,"rn":"Anitha S","rt":"Staff","st":"Anger","kw":"wheelchair ramp, blocked, motorbikes, entrance","w":"CIV","desc":"The wheelchair ramp at the Admin Block entrance is blocked by parked motorbikes during office hours."});
+                 	brs.add({"b":"ACB","f":"ACB-LIFTA","t":"Lift Out of Service","p":"Critical","s":"Closed","d":30,"cd":28,"rn":"Divya P","rt":"Student","st":"Anger","kw":"lift, stopped, between floors","w":"LIFT","desc":"Lift A stopped working again between floors with two students inside for ten minutes."});
+                 	brs.add({"b":"IDF","f":"IDF-SIGN","t":"Missing Signage","p":"Low","s":"Closed","d":25,"cd":15,"rn":"Visitor - Ramesh","rt":"Visitor","st":"Neutral","kw":"accessibility sign, faded, peeled","w":"CIV","desc":"The accessibility sign near the Idea Factory entrance is faded and partly peeled off."});
+                 	brs.add({"b":"RCF","f":"RCF-RR","t":"Inaccessible Restroom","p":"High","s":"Rejected","d":20,"cd":-1,"rn":"Sneha M","rt":"Student","st":"Disappointment","kw":"restroom, narrow door, REC Cafe","w":"","desc":"No accessible restroom near REC Cafe, the door is too narrow for a wheelchair. (Duplicate of an existing audit finding)"});
+                 	brs.add({"b":"LBB","f":"LBB-LIFT","t":"Lift Out of Service","p":"Medium","s":"Rework Required","d":15,"cd":-1,"rn":"Prof. Lakshmi","rt":"Staff","st":"Disappointment","kw":"lift buttons, floor 2, not working","w":"LIFT","desc":"Library Block lift call buttons on floor 2 are not working."});
+                 	brs.add({"b":"BUS","f":"BUS-BOARD","t":"Transport Boarding Issue","p":"High","s":"Work in Progress","d":12,"cd":-1,"rn":"Arjun V","rt":"Student","st":"Disappointment","kw":"bus steps, high, grab rail, boarding","w":"TRN","desc":"College bus entrance steps are very high and there is no grab rail, making boarding difficult for students with crutches."});
+                 	brs.add({"b":"CBL","f":"CBL-TACT","t":"Damaged Tactile Paving","p":"Medium","s":"Awaiting Verification","d":10,"cd":-1,"rn":"Nithya K","rt":"Student","st":"Neutral","kw":"tactile paving, cracked, missing tiles, footpath","w":"CIV","desc":"Tactile paving on the C Block footpath is cracked with several tiles missing."});
+                 	brs.add({"b":"TLG","f":"TLG-RAMP","t":"Blocked Ramp","p":"Medium","s":"Closed","d":8,"cd":5,"rn":"Harish B","rt":"Student","st":"Anger","kw":"ramp, blocked, stacked chairs, Tech Lounge","w":"CIV","desc":"The ramp at the Tech Lounge is blocked by stacked chairs after an event."});
+                 	brs.add({"b":"ACB","f":"ACB-LIFTA","t":"Lift Out of Service","p":"Critical","s":"Work in Progress","d":6,"cd":-1,"rn":"Meera J","rt":"Student","st":"Anger","kw":"Lift A, out of service, no notice","w":"LIFT","desc":"Lift A near the staircase has been out of service for three days with no notice board."});
+                 	brs.add({"b":"LIB","f":"LIB-STEPS","t":"Missing Handrail","p":"High","s":"Assigned","d":4,"cd":-1,"rn":"Gokul S","rt":"Student","st":"Disappointment","kw":"library steps, no handrail, crutches","w":"CIV","desc":"Library entrance steps have no handrail, which is hard for students using crutches."});
+                 	brs.add({"b":"BBC","f":"BBC-PATH","t":"Uneven Surface","p":"Medium","s":"Approved","d":3,"cd":-1,"rn":"Coach Vinod","rt":"Staff","st":"Neutral","kw":"pothole, path, BB court","w":"","desc":"The path to the BB court has a large pothole that a wheelchair cannot cross."});
+                 	brs.add({"b":"WSB","f":"WSB-PATH","t":"Obstructed Pathway","p":"Medium","s":"Under Review","d":2,"cd":-1,"rn":"Sanjay T","rt":"Student","st":"Disappointment","kw":"pathway, sand bags, bricks, workshop","w":"","desc":"Construction sand bags and bricks are blocking the pathway to the Workshop Block."});
+                 	brs.add({"b":"HUT","f":"HUT-ENT","t":"Uneven Surface","p":"Medium","s":"Submitted","d":1,"cd":-1,"rn":"Fathima Z","rt":"Student","st":"Disappointment","kw":"entrance, raised step, tables, wheelchair","w":"","desc":"Hut Cafe entrance has a raised step and tables placed so a wheelchair cannot pass."});
+                 	seq = 0;
+                 	liftCount = 0;
+                 	for each  r in brs
+                 	{
+                 		seq = seq + 1;
+                 		rep = today.subDay(r.get("d"));
+                 		tgt = rep.addDay(pDays.get(r.get("p")));
+                 		st = r.get("s");
+                 		closedOn = null;
+                 		dtr = null;
+                 		if(r.get("cd") >= 0)
+                 		{
+                 			closedOn = today.subDay(r.get("cd"));
+                 			dtr = r.get("d") - r.get("cd");
+                 		}
+                 		recurring = "No";
+                 		rc = 0;
+                 		if(r.get("f") == "ACB-LIFTA")
+                 		{
+                 			liftCount = liftCount + 1;
+                 			rc = liftCount;
+                 			if(liftCount >= 3)
+                 			{
+                 				recurring = "Yes";
+                 			}
+                 		}
+                 		esc = 0;
+                 		if(st != "Closed" && st != "Rejected" && tgt < today)
+                 		{
+                 			esc = 1;
+                 		}
+                 		rid = insert into Barrier_Report
+                 		[
+                 			Added_User=zoho.loginuser
+                 			Report_Reference="ACB-" + rep.getYear() + "-" + ("0000" + seq).right(4)
+                 			Reporter_Name=r.get("rn")
+                 			Reporter_Email=em
+                 			Reporter_Type=r.get("rt")
+                 			Building=bId.get(r.get("b"))
+                 			Facility=fId.get(r.get("f"))
+                 			Barrier_Type=r.get("t")
+                 			Description=r.get("desc")
+                 			Priority=r.get("p")
+                 			Status=st
+                 			Source="Community Report"
+                 			Reported_On=rep
+                 			Target_Date=tgt
+                 			Is_Recurring=recurring
+                 			Recurrence_Count=rc
+                 			AI_Keywords=r.get("kw")
+                 			AI_Sentiment=r.get("st")
+                 			Escalation_Level=esc
+                 			Cliq_Status="Sample data"
+                 			Closed_On=closedOn
+                 			Days_To_Resolve=dtr
+                 		];
+                 		w = r.get("w");
+                 		if(w != "")
+                 		{
+                 			prog = "In Progress";
+                 			vres = "Pending";
+                 			verOn = null;
+                 			if(st == "Assigned")
+                 			{
+                 				prog = "Not Started";
+                 			}
+                 			if(st == "Awaiting Verification")
+                 			{
+                 				prog = "Completed";
+                 			}
+                 			if(st == "Rework Required")
+                 			{
+                 				prog = "Completed";
+                 				vres = "Rework Required";
+                 			}
+                 			if(st == "Closed")
+                 			{
+                 				prog = "Completed";
+                 				vres = "Accepted";
+                 				verOn = closedOn;
+                 			}
+                 			overdue = if(esc > 0,"Yes","No");
+                 			insert into Corrective_Action
+                 			[
+                 				Added_User=zoho.loginuser
+                 				Action_Reference="ACT-" + rep.getYear() + "-" + ("0000" + seq).right(4)
+                 				Barrier_Report=rid
+                 				Assigned_To=sId.get(w)
+                 				Assigned_On=rep.addDay(1)
+                 				Target_Date=tgt
+                 				Work_Instructions="Resolve: " + r.get("t")
+                 				Progress=prog
+                 				Action_Taken=if(prog == "Completed","Obstruction removed / repair completed","")
+                 				Verifier=sId.get("VER")
+                 				Verification_Result=vres
+                 				Verified_On=verOn
+                 				Is_Overdue=overdue
+                 			]
+                 		}
+                 	}
+                 	for each  bb in Campus_Building[ID != 0]
+                 	{
+                 		thisapp.refreshBuilding(bb.ID);
+                 	}
+                 	info "Sample data loaded";
+                 }
+				 void processBarrierReport(int rId)
+                 {
+                 	r = Barrier_Report[ID == rId];
+                 	if(r.count() == 0)
+                 	{
+                 		return;
+                 	}
+                 	today = zoho.currentdate;
+                 	// 1. Reference number and dates
+                 	if(isBlank(r.Report_Reference))
+                 	{
+                 		seq = Barrier_Report[ID != 0].count();
+                 		r.Report_Reference="ACB-" + today.getYear() + "-" + ("0000" + seq).right(4);
+                 	}
+                 	if(r.Reported_On == null)
+                 	{
+                 		r.Reported_On=today;
+                 	}
+                 	if(isBlank(r.Priority))
+                 	{
+                 		r.Priority="Medium";
+                 	}
+                 	// 2. Recurring barrier detection (same facility/building + same type in last 60 days)
+                 	if(r.Facility != null)
+                 	{
+                 		similar = Barrier_Report[Facility == r.Facility && Barrier_Type == r.Barrier_Type && Reported_On >= today.subDay(60)].count();
+                 	}
+                 	else
+                 	{
+                 		similar = Barrier_Report[Building == r.Building && Barrier_Type == r.Barrier_Type && Reported_On >= today.subDay(60)].count();
+                 	}
+                 	r.Recurrence_Count=similar;
+                 	if(similar >= 3)
+                 	{
+                 		r.Is_Recurring="Yes";
+                 		if(r.Priority == "Low")
+                 		{
+                 			r.Priority="Medium";
+                 		}
+                 		else if(r.Priority == "Medium")
+                 		{
+                 			r.Priority="High";
+                 		}
+                 	}
+                 	else
+                 	{
+                 		r.Is_Recurring="No";
+                 	}
+                 	// 3. Target date from priority (SLA)
+                 	slaDays = {"Critical":2,"High":5,"Medium":10,"Low":20};
+                 	r.Target_Date=r.Reported_On.addDay(slaDays.get(r.Priority));
+                 	r.Escalation_Level=0;
+                 	// 4. AI sentiment (Zia) - advisory only, never used to set priority
+                 	desc = ifnull(r.Description,"");
+                 	if(desc != "")
+                 	{
+                 		try 
+                 		{
+                 			sent = if(desc.length() > 190,desc.subString(0,190),desc);
+                 			ai = zoho.ai.analyseSentiment(sent);
+                 			emo = "";
+                 			if(ai.containKey("data"))
+                 			{
+                 				emo = ai.get("data").get(0).get("Emotion");
+                 			}
+                 			else if(ai.containKey("Prediction"))
+                 			{
+                 				emo = ai.get("Prediction");
+                 			}
+                 			r.AI_Sentiment=ifnull(emo,"Unavailable");
+                 		}		catch (e)
+                 		{
+                 			r.AI_Sentiment="Unavailable";
+                 		}
+                 		// 5. Keyword extraction (accessibility vocabulary match)
+                 		vocab = {"wheelchair","ramp","lift","elevator","stairs","steps","handrail","railing","blocked","obstructed","parked","bike","construction","pothole","crack","broken","damaged","tactile","signage","sign","restroom","toilet","door","narrow","slippery","wet","spill","dark","lighting","bus","boarding","crutches","blind","visually impaired","hearing","entrance","pathway","path","parking","stuck","trapped","out of order","not working"};
+                 		low = desc.toLowerCase();
+                 		kw = List();
+                 		for each  v in vocab
+                 		{
+                 			if(low.contains(v))
+                 			{
+                 				kw.add(v);
+                 			}
+                 		}
+                 		r.AI_Keywords=if(kw.size() > 0,kw.toString(", "),"(none detected)");
+                 	}
+                 	// 6. Cliq alert for Critical / High / Recurring
+                 	bName = ifnull(Campus_Building[ID == r.Building].Building_Name,"Campus");
+                 	fName = "";
+                 	if(r.Facility != null)
+                 	{
+                 		fName = " / " + Campus_Facility[ID == r.Facility].Facility_Name;
+                 	}
+                 	if(r.Priority == "Critical" || r.Priority == "High" || r.Is_Recurring == "Yes")
+                 	{
+                 		msg = if(r.Priority == "Critical","URGENT - ","") + "Accessibility barrier " + r.Report_Reference + " | " + r.Priority + " | " + r.Barrier_Type + " at " + bName + fName + " | Reported by " + r.Reporter_Name + " | Due " + r.Target_Date.toString("dd-MMM-yyyy");
+                 		if(r.Is_Recurring == "Yes")
+                 		{
+                 			msg = msg + " | RECURRING (" + similar + " similar reports in 60 days)";
+                 		}
+                 		msg = msg + " | " + desc;
+                 		try 
+                 		{
+                 			resp = zoho.cliq.postToChannel("accessalerts",msg,"zoho_cliq_connection");
+                 			info resp;
+                 			r.Cliq_Status=if(resp.get("status") == "OK","Posted","Failed");
+                 		}		catch (e)
+                 		{
+                 			r.Cliq_Status="Failed";
+                 		}
+                 	}
+                 	else
+                 	{
+                 		r.Cliq_Status="Not required (" + r.Priority + ")";
+                 	}
+                 	// 7. Email acknowledgement to reporter
+                 	if(!isBlank(r.Reporter_Email))
+                 	{
+                 		sendmail
+                 		[
+                 			from :zoho.adminuserid
+                 			to :r.Reporter_Email
+                 			subject :"AccessAble Campus - Report " + r.Report_Reference + " received"
+                 			message :"<p>Dear " + r.Reporter_Name + ",</p><p>Thank you for reporting an accessibility barrier. Your report has been recorded.</p><p><b>Reference:</b> " + r.Report_Reference + "<br><b>Location:</b> " + bName + fName + "<br><b>Barrier:</b> " + r.Barrier_Type + "<br><b>Priority:</b> " + r.Priority + "<br><b>Target resolution:</b> " + r.Target_Date.toString("dd-MMM-yyyy") + "</p><p>The Accessibility Cell will review it and keep you updated.</p><p>- AccessAble Campus</p>"
+                 		]
+                 	}
+                 	thisapp.refreshBuilding(r.Building);
+                 }
+				 void refreshBuilding(int bId)
+                 {
+                 	b = Campus_Building[ID == bId];
+                 	if(b.count() > 0)
+                 	{
+                 		openCount = Barrier_Report[Building == bId && Status != "Closed" && Status != "Rejected"].count();
+                 		total = 0.0;
+                 		cnt = 0;
+                 		lastDate = '01-Jan-2000';
+                 		for each  f in Campus_Facility[Campus_Building == bId]
+                 		{
+                 			la = Accessibility_Audit[Facility == f.ID] sort by Audit_Date desc range from 1 to 1;
+                 			if(la.count() > 0)
+                 			{
+                 				if(la.Audit_Score != null)
+                 				{
+                 					total = total + la.Audit_Score;
+                 					cnt = cnt + 1;
+                 					if(la.Audit_Date > lastDate)
+                 					{
+                 						lastDate = la.Audit_Date;
+                 					}
+                 				}
+                 			}
+                 		}
+                 		b.Open_Barriers=openCount;
+                 		if(cnt > 0)
+                 		{
+                 			score = (total / cnt).round(1);
+                 			b.Accessibility_Score=score;
+                 			b.Last_Audit_Date=lastDate;
+                 			b.Rating=if(score >= 80,"Green",if(score >= 50,"Amber","Red"));
+                 		}
+                 		else
+                 		{
+                 			b.Rating="Not Audited";
+                 		}
+                 	}
+                 }
+			 }
+		 }
+
+
+		workflow
+		{
+		form
+		{
+			On_Audit_Submitted as "On Audit Submitted"
+			{
+				type =  form
+				form = Accessibility_Audit
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											thisapp.handleAudit(input.ID);
+						)
+					}
+				}
+
+			}
+			On_Barrier_Reported as "On Barrier Reported"
+			{
+				type =  form
+				form = Barrier_Report
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											thisapp.processBarrierReport(input.ID);
+										r = Barrier_Report[ID == input.ID];
+										if(r.Source == "Audit Finding" && r.Status == "Approved")
+										{
+											thisapp.handleBarrierStatus(input.ID);
+										}
+						)
+					}
+				}
+
+			}
+			On_Barrier_Status_Change as "On Barrier Status Change"
+			{
+				type =  form
+				form = Barrier_Report
+
+				record event = on edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Runs whenever an administrator updates a barrier (approve / reject / close)
+										thisapp.handleBarrierStatus(input.ID);
+						)
+					}
+				}
+
+			}
+			On_Action_Progress as "On Action Progress"
+			{
+				type =  form
+				form = Corrective_Action
+
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Syncs staff progress and verifier decision back to the barrier report
+										thisapp.handleActionUpdate(input.ID);
+						)
+					}
+				}
+
+			}
+			Report_Form_Load as "Report Form Load"
+			{
+				type =  form
+				form = Barrier_Report
+
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Reporters only see the fields they need - system fields are filled automatically
+										hide Report_Reference;
+										hide Status;
+										hide Source;
+										hide Reported_On;
+										hide Target_Date;
+										hide Is_Recurring;
+										hide Recurrence_Count;
+										hide AI_Keywords;
+										hide AI_Sentiment;
+										hide Escalation_Level;
+										hide Cliq_Status;
+										hide Closed_On;
+										hide Days_To_Resolve;
+						)
+					}
+				}
+
+			}
+			Audit_Form_Load as "Audit Form Load"
+			{
+				type =  form
+				form = Accessibility_Audit
+
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Score, result and reference are calculated automatically on submit
+										input.Audit_Date = zoho.currentdate;
+										hide Audit_Reference;
+										hide Audit_Score;
+										hide Overall_Result;
+										hide Failed_Items;
+										hide Audit_Status;
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Daily_Overdue_Escalation as "Daily Overdue Escalation"
+			{
+				type =  schedule
+				start = "2026-10-31 08:30:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						// Every day at 08:30 - escalate overdue barriers to Cliq + email and refresh building scores
+										thisapp.escalateOverdue();
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Auditor and Facilities Staff"
+			{
+				name = "Auditor and Facilities Staff"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Conducts audits, updates assigned corrective actions and verifies completed work\n"
+				ModulePermissions
+				{
+					Campus_Building
+					{
+						allFieldsVisible= true 
+					}
+					Barrier_Report
+					{
+						allFieldsVisible= true 
+					}
+					Campus_Facility
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Staff_Directory
+					{
+						allFieldsVisible= true 
+					}
+					Accessibility_Audit
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+					Corrective_Action
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Action_Due_Calendar={"View","Edit"}
+							All_Corrective_Actions={"View","Edit"}
+						}
+					}
+					Staff_Workboard
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Community Member"
+			{
+				name = "Community Member"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Can submit barrier reports and view reports and the community page only\n"
+				ModulePermissions
+				{
+					Campus_Building
+					{
+						allFieldsVisible= true 
+					}
+					Barrier_Report
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Barrier_Reports={"View"}
+						}
+					}
+					Campus_Facility
+					{
+						allFieldsVisible= true 
+					}
+					Staff_Directory
+					{
+						allFieldsVisible= true 
+					}
+					Accessibility_Audit
+					{
+						allFieldsVisible= true 
+					}
+					Corrective_Action
+					{
+						allFieldsVisible= true 
+					}
+					Report_and_Track
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Accessibility Administrator"
+					{
+						description = "M"
+						"Auditor and Facilities Staff"
+						{
+							description = "Conducts inspections, records audit findings, works on assigned corrective actions and verifies completed work."
+							"Campus Community Member"
+							{
+								description = "Students, staff and visitors who report accessibility barriers and track their own reports."
+							}
+						}
+					}
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "AC"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	connections
+	{
+		zoho_cliq_connection
+		(
+			displayname = "Zoho Cliq Connection"
+			connector = zohochat
+			permissions = {"get_team","post_message_to_chat","post_message_to_channel","post_message_to_bot","pin_message","mute_chat","mark_reminder_as_incomplete","mark_reminder_as_complete","leave_chat","leave_channel","join_channel","get_user","post_message_to_user","get_remote_status","get_reminder","get_record","get_pinned_message","get_message","get_channel","get_all_users","get_all_user_teams","get_all_user_layouts","get_all_teams","unmute_chat","webhook_update_operation","webhook_read_operation","update_user","update_team","update_reminder","update_record","update_channel_permissions","update_channel_member_role","update_channel","unpin_message","get_all_team_members","unassign_user_from_reminder","unarchive_channel","share_file_with_user","share_file_with_bot","share_file_in_chat","share_file_in_channel","schedule_message","remind_multiple_assignees","remind_assignee","reject_channel","all_team_operations","delete_channel","create_team","create_reminder","create_record","create_channel","check_out","check_in","assign_users_to_reminder","archive_channel","approve_channel","delete_channel_member","all_reminder_operations","all_message_operations","all_extension_operations","all_database_operations","all_channel_operations","all_bot_operations","add_user","add_team_members","add_reaction","add_channel_members","export_channels","get_all_statuses","get_all_reminders","get_all_records","get_all_reactions","get_all_messages","get_all_departments","get_all_chats","get_all_chat_members","get_all_channels","get_all_channel_members","add_bot_to_channel","edit_message","delete_team_member","delete_team","delete_reminder","delete_record","delete_reaction","delete_multiple_reminders","delete_multiple_channel_members","delete_message","delete_completed_reminders"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Accessibility_Audit
+			{
+				label placement = left
+			}
+			form Barrier_Report
+			{
+				label placement = left
+			}
+			form Campus_Building
+			{
+				label placement = left
+			}
+			form Campus_Facility
+			{
+				label placement = left
+			}
+			form Corrective_Action
+			{
+				label placement = left
+			}
+			form Staff_Directory
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Staff_Directory_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Staff_Name as "Name"
+								Staff_Role as "Role"
+								Team
+								Staff_Email as "Email"
+								Phone
+								Specialisation
+								Staff_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Staff_Name as "Name"
+								Staff_Role as "Role"
+								Team
+								Staff_Email as "Email"
+								Phone
+								Specialisation
+								Staff_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Campus_Building_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Building_Name as "Building"
+								Building_Code as "Code"
+								Building_Type as "Type"
+								Accessibility_Score as "Score (%)"
+								Rating
+								Open_Barriers as "Open Barriers"
+								Last_Audit_Date as "Last Audit"
+								Floors
+								Building_Photo as "Photo"
+								Building_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Building_Name as "Building"
+								Building_Code as "Code"
+								Building_Type as "Type"
+								Accessibility_Score as "Score (%)"
+								Rating
+								Open_Barriers as "Open Barriers"
+								Last_Audit_Date as "Last Audit"
+								Floors
+								Building_Photo as "Photo"
+								Building_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Campus_Facilities
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Facility_Name as "Facility"
+								Campus_Building.Building_Name as "Building"
+								Facility_Type as "Type"
+								Floor
+								Facility_Status as "Status"
+								Next_Inspection_Due as "Next Inspection Due"
+								Location_Description as "Location"
+								Facility_Photo as "Photo"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Facility_Name as "Facility"
+								Campus_Building.Building_Name as "Building"
+								Facility_Type as "Type"
+								Floor
+								Facility_Status as "Status"
+								Next_Inspection_Due as "Next Inspection Due"
+								Location_Description as "Location"
+								Facility_Photo as "Photo"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Accessibility_Audits
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Audit_Reference as "Reference"
+								Audit_Date as "Audit Date"
+								Facility.Facility_Name as "Facility"
+								Auditor.Staff_Name as "Auditor"
+								Audit_Score as "Score (%)"
+								Overall_Result as "Result"
+								Failed_Items as "Failed Items"
+								Ramp_Access as "Ramp"
+								Pathway_Clear as "Pathway"
+								Signage_Present as "Signage"
+								Lift_Operational as "Lift"
+								Restroom_Accessible as "Restroom"
+								Parking_Usable as "Parking"
+								Handrails_Present as "Handrails"
+								Tactile_Paving as "Tactile Paving"
+								Evidence_Photo as "Evidence"
+								Observations
+								Audit_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Audit_Reference as "Reference"
+								Audit_Date as "Audit Date"
+								Facility.Facility_Name as "Facility"
+								Auditor.Staff_Name as "Auditor"
+								Audit_Score as "Score (%)"
+								Overall_Result as "Result"
+								Failed_Items as "Failed Items"
+								Ramp_Access as "Ramp"
+								Pathway_Clear as "Pathway"
+								Signage_Present as "Signage"
+								Lift_Operational as "Lift"
+								Restroom_Accessible as "Restroom"
+								Parking_Usable as "Parking"
+								Handrails_Present as "Handrails"
+								Tactile_Paving as "Tactile Paving"
+								Evidence_Photo as "Evidence"
+								Observations
+								Audit_Status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Barrier_Reports
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Report_Reference as "Reference"
+								Reported_On as "Reported On"
+								Building.Building_Name as "Building"
+								Facility.Facility_Name as "Facility"
+								Barrier_Type as "Barrier Type"
+								Priority
+								Status
+								Target_Date as "Target Date"
+								Is_Recurring as "Recurring"
+								Escalation_Level as "Escalation"
+								AI_Sentiment as "AI Sentiment"
+								AI_Keywords as "AI Keywords"
+								Reporter_Name as "Reporter"
+								Reporter_Type as "Reporter Type"
+								Description
+								Barrier_Photo as "Photo"
+								Source
+								Days_To_Resolve as "Days to Resolve"
+								Closed_On as "Closed On"
+								Cliq_Status as "Cliq Alert"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Report_Reference as "Reference"
+								Reported_On as "Reported On"
+								Building.Building_Name as "Building"
+								Facility.Facility_Name as "Facility"
+								Barrier_Type as "Barrier Type"
+								Priority
+								Status
+								Target_Date as "Target Date"
+								Is_Recurring as "Recurring"
+								Escalation_Level as "Escalation"
+								AI_Sentiment as "AI Sentiment"
+								AI_Keywords as "AI Keywords"
+								Reporter_Name as "Reporter"
+								Reporter_Type as "Reporter Type"
+								Description
+								Barrier_Photo as "Photo"
+								Source
+								Days_To_Resolve as "Days to Resolve"
+								Closed_On as "Closed On"
+								Cliq_Status as "Cliq Alert"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Corrective_Actions
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Action_Reference as "Reference"
+								Barrier_Report.Report_Reference as "Barrier Report"
+								Assigned_To.Staff_Name as "Assigned To"
+								Assigned_On as "Assigned On"
+								Target_Date as "Target Date"
+								Progress
+								Is_Overdue as "Overdue"
+								Verification_Result as "Verification"
+								Verifier.Staff_Name as "Verifier"
+								Verified_On as "Verified On"
+								Work_Instructions as "Instructions"
+								Action_Taken as "Action Taken"
+								Completion_Photo as "Evidence"
+								Verification_Comments as "Verifier Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Action_Reference as "Reference"
+								Barrier_Report.Report_Reference as "Barrier Report"
+								Assigned_To.Staff_Name as "Assigned To"
+								Assigned_On as "Assigned On"
+								Target_Date as "Target Date"
+								Progress
+								Is_Overdue as "Overdue"
+								Verification_Result as "Verification"
+								Verifier.Staff_Name as "Verifier"
+								Verified_On as "Verified On"
+								Work_Instructions as "Instructions"
+								Action_Taken as "Action Taken"
+								Completion_Photo as "Evidence"
+								Verification_Comments as "Verifier Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report aBarrier_Workflow_Board
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Report_Reference as "Report Reference"
+								Reporter_Name as "Reporter Name"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Report_Reference as "Report Reference"
+								Reporter_Name as "Reporter Name"
+								Reporter_Email as "Reporter Email"
+								Reporter_Type as "Reporter Type"
+								Building
+								Facility
+								Barrier_Type as "Barrier Type"
+								Description
+								Barrier_Photo as "Barrier Photo"
+								Priority
+								Status
+								Source
+								Reported_On as "Reported On"
+								Target_Date as "Target Resolution Date"
+								Is_Recurring as "Recurring Barrier"
+								Recurrence_Count as "Similar Reports (60 days)"
+								AI_Keywords as "AI Keywords"
+								AI_Sentiment as "AI Sentiment"
+								Escalation_Level as "Escalation Level"
+								Cliq_Status as "Cliq Alert Status"
+								Closed_On as "Closed On"
+								Days_To_Resolve as "Days to Resolve"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Action_Due_Calendar
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Action_Reference as "Action Reference"
+								Barrier_Report as "Barrier Report"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Action_Reference as "Action Reference"
+								Barrier_Report as "Barrier Report"
+								Assigned_To as "Assigned To"
+								Assigned_On as "Assigned On"
+								Target_Date as "Target Date"
+								Work_Instructions as "Work Instructions"
+								Progress
+								Action_Taken as "Action Taken"
+								Completion_Photo as "Completion Evidence"
+								Verifier
+								Verification_Result as "Verification Result"
+								Verification_Comments as "Verification Comments"
+								Verified_On as "Verified On"
+								Is_Overdue as "Overdue"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Staff_Directory
+				{
+					displayname = "Staff Directory"
+					icon = "holidays-sickle"
+					form  Staff_Directory
+					{
+						icon = "holidays-sickle"
+					}
+					report Staff_Directory_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Campus_Building
+				{
+					displayname = "Campus Building"
+					icon = "business-building"
+					form  Campus_Building
+					{
+						icon = "business-building"
+					}
+					report Campus_Building_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Campus_Facilities
+				{
+					displayname = "Campus Facilities"
+					icon = "education-backpack-57"
+					form  Campus_Facility
+					{
+						icon = "education-school"
+					}
+					report All_Campus_Facilities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Accessibility_Audits
+				{
+					displayname = "Accessibility Audits"
+					icon = "users-2-disabled"
+					form  Accessibility_Audit
+					{
+						icon = "users-2-disabled"
+					}
+					report All_Accessibility_Audits
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Barrier_Reports
+				{
+					displayname = "Barrier Reports"
+					icon = "business-laptop-71"
+					form  Barrier_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report All_Barrier_Reports
+					{
+						icon = "tech-desktop"
+					}
+					report aBarrier_Workflow_Board
+					{
+						icon = "business-laptop-71"
+					}
+ 
+					report Building_Barrier_Pivot
+					{
+						icon = "business-laptop-71"
+					}
+				}
+				section Corrective_Actions
+				{
+					displayname = "Corrective Actions"
+					icon = "media-1-action-74"
+					form  Corrective_Action
+					{
+						icon = "media-1-action-74"
+					}
+					report All_Corrective_Actions
+					{
+						icon = "tech-desktop"
+					}
+					report Action_Due_Calendar
+					{
+						icon = "media-1-action-74"
+					}
+				}
+				section Command_Centre
+				{
+					displayname = "Command Centre"
+					icon = "design-command"
+					page Command_Centre
+					{
+						icon = "design-command"
+					}
+					page Staff_Workboard
+					{
+						icon = "holidays-sickle"
+					}
+					page Report_and_Track
+					{
+						icon = "media-1-button-next"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+	reports configuration
+	{
+	
+		Version = 2000056742025
+		Key     = "O49SnxG57GqAgKCsOxUrGKJkOQweHq04XF7m7A6USYwDxbPXPR2hKhF9C40Smp5PP9VBCh6JBSmpyMFUPdDb8QtVeOvYBmzQSaqJ"
+	}
+}
